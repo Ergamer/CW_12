@@ -13,6 +13,7 @@ const Routes = ({user}) => (
     <Switch>
         <Route path="/" exact component={Albums}/>
         <ProtectedRoute
+            isAllowed={user}
             path="/albums/new"
             exact
             component={NewAlbum}
