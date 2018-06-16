@@ -16,7 +16,7 @@ export const fetchGetThisUserAlbums = (id) => {
 };
 
 
-export const albumCreated = () => {
+export const albumCreated = (id, token) => {
   return dispatch => {
       return axios.post('/albums', {album: id}, {headers: {'Token': token}}).then(res => console.log(res.data))
   }

@@ -30,7 +30,7 @@ db.once('open', async () => {
   }, {
     title: 'Queen',
     image: '2.jpg',
-    user: user._id
+    user: user._id,
     published: true
 
   });

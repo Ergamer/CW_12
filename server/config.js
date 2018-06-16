@@ -7,7 +7,7 @@ module.exports = {
     uploadPath: path.join(rootPath, '/public/uploads'),
     db: {
         url: 'mongodb://localhost:27017',
-        name: 'cocktail'
+        name: 'albums'
     },
     facebook: {
         appId: "392830884569369", // Enter your app ID here
