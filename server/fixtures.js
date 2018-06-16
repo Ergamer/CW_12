@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('./config');
+const Album = require('./models/Album');
 
 const User = require('./models/User');
 
@@ -14,7 +15,7 @@ db.once('open', async () => {
     console.log('Collections were not present, skipping drop...');
   }
 
-  const [user, Джиджи Буффон] = await User.create({
+  const [user, Idiot] = await User.create({
     username: 'user',
     password: '123'
   }, {

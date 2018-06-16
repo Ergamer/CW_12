@@ -31,20 +31,23 @@ const createRouter = () => {
             .catch(() => res.sendStatus(500));
     });
 
-    router.post('/', [auth, permit('admin'), upload.single('image')], (req, res) => {
-        const artistData = req.body;
+    router.post('/', upload.single('image'), (req, res) => {
+        console.log(req.body);
+        const albumData = req.body;
+        const token = req.get('Token');
+        console.log(token);
 
         if (req.file) {
-            artistData.image = req.file.filename;
+            albumData.image = req.file.filename;
         } else {
-            artistData.image = null;
+            albumData.image = null;
         }
 
         const album = new Album(req.body);
 
 
         album.save()
-            .then(artist => res.send(album))
+            .then(album => res.send(album))
             .catch(error => res.status(400).send(error));
     });
 

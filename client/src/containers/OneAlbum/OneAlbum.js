@@ -13,7 +13,7 @@ class OneAlbum extends Component{
                 <Panel.Body>
                     <h1>Albums</h1>
                     {this.props.albums.map(album => {
-                        return <Album onClick={this.props.users ? () => this.props.fetchPostThisTrackInfo(album._id, this.props.users.token) : null}
+                        return <Album onClick={this.props.users ? () => this.props.fetchGetThisUserAlbums(album._id, this.props.users.token) : null}
                                   key={album._id}>{album.title}</Album>
                     })}
                 </Panel.Body>
@@ -32,7 +32,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        
+        fetchGetThisUserAlbums: () => dispatch(fetchGetThisUserAlbums())
     };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OneAlbum);

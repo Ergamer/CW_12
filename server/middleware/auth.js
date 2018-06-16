@@ -1,7 +1,9 @@
 const User = require('../models/User');
 
 const auth = async (req, res, next) => {
+    console.log(req.body);
     const token = req.get('Token');
+    console.log(token);
 
     if (!token) {
         return res.status(401).send({message: 'No token present'});

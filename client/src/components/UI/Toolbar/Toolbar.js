@@ -11,6 +11,9 @@ const Toolbar = ({user, logout}) => (
             <Navbar.Brand>
                 <LinkContainer to="/" exact><a>Albums</a></LinkContainer>
             </Navbar.Brand>
+            <Navbar.Brand>
+                <LinkContainer to="/albums/new" exact><a>New album</a></LinkContainer>
+            </Navbar.Brand>
         </Navbar.Header>
         <Navbar.Collapse>
             {user ? <UserMenu user={user} logout={logout} /> : <AnonymousMenu/>}

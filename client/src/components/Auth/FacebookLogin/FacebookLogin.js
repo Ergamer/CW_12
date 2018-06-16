@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FacebookLoginButton from 'react-facebook-login/dist/facebook-login-render-props';
+import FacebookLoginButton from 'react-facebook-login/dist/facebook-login-with-button';
 import {Button} from "react-bootstrap";
 import {connect} from "react-redux";
 

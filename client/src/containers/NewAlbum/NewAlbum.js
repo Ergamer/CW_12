@@ -7,9 +7,6 @@ import {albumCreated} from "../../store/actions/albums";
 
 
 class NewAlbum extends Component {
-    // componentDidMount () {
-    //   this.props.albumCreated();
-    // }
 
     albumCreated = (albumData, token) => {
         this.props.albumCreated(albumData, token);
@@ -22,8 +19,8 @@ class NewAlbum extends Component {
             <Fragment>
                 <PageHeader>New album</PageHeader>
                 <AlbumForm
-                    onSubmit={this.createAlbum}
                     user={this.props.users}
+                    createAlbum={this.props.createAlbum}
                 />
             </Fragment>
         );

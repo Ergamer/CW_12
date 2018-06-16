@@ -1,5 +1,6 @@
 import axios from '../../axios-api';
 import {FETCH_ALBUMS_SUCCESS} from "./actionTypes";
+import {push} from "react-router-redux";
 
 
 
@@ -23,8 +24,13 @@ export const fetchGetAllAlbums = () => {
     }
 };
 
-export const albumCreated = (id, token) => {
+export const albumCreated = (albumData, token) => {
+    const headers = {
+        Token: token
+    };
   return dispatch => {
-      return axios.post('/albums', {album: id}, {headers: {'Token': token}}).then(res => console.log(res.data))
+      return axios.post('/albums', {...headers}).then(
+          dispatch(push('/'))
+      )
   }
 };

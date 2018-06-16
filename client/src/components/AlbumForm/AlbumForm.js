@@ -18,7 +18,7 @@ class AlbumForm extends Component {
 
     console.log(this.props.user.token)
 
-    this.props.onSubmit(formData, this.props.user.token);
+    this.props.createAlbum(formData, this.props.user.token);
   };
 
   inputChangeHandler = event => {
