@@ -13,7 +13,7 @@ const AlbumList = props => {
     if (props.image) {
         image = config.apiUrl + '/uploads/' + props.image;
     }
-
+console.log(props.user)
     return (
         <Panel>
             <Panel.Body>

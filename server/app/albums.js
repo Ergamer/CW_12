@@ -24,14 +24,27 @@ const upload = multer({storage});
 
 const createRouter = () => {
     const router = express.Router();
-
     router.get('/', (req, res) => {
-        Album.find()
-            .then(albums => res.send(albums))
-            .catch(() => res.sendStatus(500));
+        if(req.query.user) {
+                Album.find({user: req.query.user})
+                    .then(albums => res.send(albums))
+                    .catch(() => res.sendStatus(500));
+        } else {
+            Album.find()
+                .then(albums => res.send(albums))
+                .catch(() => res.sendStatus(500));
+        }
     });
 
-    router.post('/', upload.single('image'), (req, res) => {
+    router.get('/:id', (req, res) => {
+            Album.findOne({_id: req.params.id})
+                .then(albums => res.send(albums))
+                .catch(() => res.sendStatus(500));
+    });
+
+
+
+    router.post('/', [auth, upload.single('image')], (req, res) => {
         console.log(req.body);
         const albumData = req.body;
         const token = req.get('Token');
@@ -43,11 +56,21 @@ const createRouter = () => {
             albumData.image = null;
         }
 
+        albumData.user = req.user
         const album = new Album(req.body);
 
 
         album.save()
             .then(album => res.send(album))
+            .catch(error => res.status(400).send(error));
+    });
+    router.delete('/:id', auth, async (req, res) => {
+        const album = await Album.findOne({_id: req.params.id});
+
+        if(album.user.toString() !== req.user._id) return res.status(403).send({error: 'Permission denied'});
+
+        album.remove()
+            .then(() => res.send('Artist was deleted!'))
             .catch(error => res.status(400).send(error));
     });
 

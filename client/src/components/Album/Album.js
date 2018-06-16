@@ -21,9 +21,7 @@ const Album = props => {
                     src={image}
                     thumbnail
                 />
-                <Link to={'/albums/' + props.id}>
-                    {props.title}
-                </Link>
+                <p>{props.title}</p>
             </Panel.Body>
         </Panel>
     );

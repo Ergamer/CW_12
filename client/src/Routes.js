@@ -4,6 +4,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import NewAlbum from "./containers/NewAlbum/NewAlbum";
 import Albums from "./containers/Albums/Albums";
 import Login from "./containers/Login/Login";
+import OneAlbum from "./containers/OneAlbum/OneAlbum";
 
 const ProtectedRoute = ({isAllowed, ...props}) => (
     isAllowed ? <Route {...props}/> : <Redirect to="/login" />
@@ -12,6 +13,7 @@ const ProtectedRoute = ({isAllowed, ...props}) => (
 const Routes = ({user}) => (
     <Switch>
         <Route path="/" exact component={Albums}/>
+        <Route path="/albums/:id" exact component={OneAlbum}/>
         <ProtectedRoute
             isAllowed={user}
             path="/albums/new"

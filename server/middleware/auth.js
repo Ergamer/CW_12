@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 const auth = async (req, res, next) => {
     console.log(req.body);
-    const token = req.get('Token');
+    const token = req.get('Auth-Token');
     console.log(token);
 
     if (!token) {
