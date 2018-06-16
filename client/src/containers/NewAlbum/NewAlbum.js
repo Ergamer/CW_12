@@ -2,17 +2,17 @@ import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import {PageHeader} from "react-bootstrap";
 import AlbumForm from "../../components/AlbumForm/AlbumForm";
-import {createAlbum} from "../../store/actions/albums";
+import {albumCreated} from "../../store/actions/albums";
 
 
 
 class NewAlbum extends Component {
     // componentDidMount () {
-    //   this.props.cocktailCreated();
+    //   this.props.albumCreated();
     // }
 
-    createCocktail = (cocktailData, token) => {
-        this.props.cocktailCreated(cocktailData, token);
+    albumCreated = (albumData, token) => {
+        this.props.albumCreated(albumData, token);
         console.log(this.props.users);
     };
 
@@ -22,9 +22,8 @@ class NewAlbum extends Component {
             <Fragment>
                 <PageHeader>New album</PageHeader>
                 <AlbumForm
-                    onSubmit={this.createCocktail}
+                    onSubmit={this.createAlbum}
                     user={this.props.users}
-                    // categories={this.props.categories}
                 />
             </Fragment>
         );
@@ -32,7 +31,7 @@ class NewAlbum extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-        cocktailCreated: (cocktailData, token) =>  dispatch(createCocktail(cocktailData, token))
+        createAlbum: (albumData, token) =>  dispatch(albumCreated(albumData, token))
     }
 );
 

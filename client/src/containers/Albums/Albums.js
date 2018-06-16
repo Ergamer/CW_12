@@ -3,12 +3,12 @@ import {connect} from 'react-redux';
 import {Button, PageHeader} from "react-bootstrap";
 import {Link} from "react-router-dom";
 
-import {fetchAlbums} from "../../store/actions/albums";
+import {fetchGetThisUserAlbums} from "../../store/actions/albums";
 import AlbumList from '../../components/AlbumList/AlbumList';
 
-class Cocktails extends Component {
+class Albums extends Component {
     componentDidMount() {
-        this.props.fetchAlbums();
+        this.props.fetchGetThisUserAlbums(this.props.match.params.id);
     }
 
     render() {
@@ -49,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAlbums: () => dispatch(fetchAlbums())
+        fetchGetThisUserAlbums: (id) => dispatch(fetchGetThisUserAlbums(id))
     }
 };
 
