@@ -15,6 +15,13 @@ export const fetchGetThisUserAlbums = (id) => {
     }
 };
 
+export const fetchGetAllAlbums = () => {
+    return dispatch => {
+        return axios.get('/albums').then(
+            response => dispatch(fetchAlbumsSuccess(response.data))
+        );
+    }
+};
 
 export const albumCreated = (id, token) => {
   return dispatch => {
